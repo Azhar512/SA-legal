@@ -1,6 +1,6 @@
 import { PassThrough, Readable } from "node:stream";
 //#region node_modules/rou3/dist/index.mjs
-const NullProtoObj = /* @__PURE__ */ (() => {
+var NullProtoObj = /* @__PURE__ */ (() => {
 	const e = function() {};
 	return e.prototype = Object.create(null), Object.freeze(e.prototype), e;
 })();
@@ -33,9 +33,9 @@ function lazyInherit(target, source, sourceKey) {
 		if (modified) Object.defineProperty(target, key, desc);
 	}
 }
-const _needsNormRE = /(?:(?:^|\/)(?:\.|\.\.|%2e|%2e\.|\.%2e|%2e%2e)(?:\/|$))|[\\^#"<>{}`\x80-\uffff]/i;
-const _searchNeedsNormRE = /[#"'<>]/;
-const FastURL = /* @__PURE__ */ (() => {
+var _needsNormRE = /(?:(?:^|\/)(?:\.|\.\.|%2e|%2e\.|\.%2e|%2e%2e)(?:\/|$))|[\\^#"<>{}`\x80-\uffff]/i;
+var _searchNeedsNormRE = /[#"'<>]/;
+var FastURL = /* @__PURE__ */ (() => {
 	const NativeURL = globalThis.URL;
 	const FastURL = class URL {
 		#url;
@@ -141,7 +141,7 @@ const FastURL = /* @__PURE__ */ (() => {
 })();
 //#endregion
 //#region node_modules/srvx/dist/adapters/node.mjs
-const NodeResponse = /* @__PURE__ */ (() => {
+var NodeResponse = /* @__PURE__ */ (() => {
 	const NativeResponse = globalThis.Response;
 	const STATUS_CODES = globalThis.process?.getBuiltinModule?.("node:http")?.STATUS_CODES || {};
 	class NodeResponse {
@@ -255,10 +255,10 @@ const NodeResponse = /* @__PURE__ */ (() => {
 function decodePathname(pathname) {
 	return decodeURI(pathname.includes("%25") ? pathname.replace(/%25/g, "%2525") : pathname);
 }
-const kEventNS = "h3.internal.event.";
-const kEventRes = /* @__PURE__ */ Symbol.for(`${kEventNS}res`);
-const kEventResHeaders = /* @__PURE__ */ Symbol.for(`${kEventNS}res.headers`);
-const kEventResErrHeaders = /* @__PURE__ */ Symbol.for(`${kEventNS}res.err.headers`);
+var kEventNS = "h3.internal.event.";
+var kEventRes = /* @__PURE__ */ Symbol.for(`${kEventNS}res`);
+var kEventResHeaders = /* @__PURE__ */ Symbol.for(`${kEventNS}res.headers`);
+var kEventResErrHeaders = /* @__PURE__ */ Symbol.for(`${kEventNS}res.err.headers`);
 var H3Event = class {
 	app;
 	req;
@@ -312,7 +312,7 @@ var H3EventResponse = class {
 		return this[kEventResErrHeaders] ||= new Headers();
 	}
 };
-const DISALLOWED_STATUS_CHARS = /[^\u0009\u0020-\u007E]/g;
+var DISALLOWED_STATUS_CHARS = /[^\u0009\u0020-\u007E]/g;
 function sanitizeStatusMessage(statusMessage = "") {
 	return statusMessage.replace(DISALLOWED_STATUS_CHARS, "");
 }
@@ -395,8 +395,8 @@ function isJSONSerializable(value, _type) {
 	const proto = Object.getPrototypeOf(value);
 	return proto === Object.prototype || proto === null;
 }
-const kNotFound = /* @__PURE__ */ Symbol.for("h3.notFound");
-const kHandled = /* @__PURE__ */ Symbol.for("h3.handled");
+var kNotFound = /* @__PURE__ */ Symbol.for("h3.notFound");
+var kHandled = /* @__PURE__ */ Symbol.for("h3.handled");
 function toResponse(val, event, config = {}) {
 	if (typeof val?.then === "function") return val.then((resolvedVal) => toResponse(resolvedVal, event, config), (r) => toResponse(typeof r === "number" ? new HTTPError({ status: r }) : r, event, config));
 	const response = prepareResponse(val, event, config);
@@ -469,7 +469,7 @@ function mergeHeaders$1(base, overrides, target = new Headers(base)) {
 	else target.set(name, value);
 	return target;
 }
-const frozen = (name) => (...args) => {
+var frozen = (name) => (...args) => {
 	throw new Error(`Headers are frozen (${name} ${args.join(", ")})`);
 };
 var FrozenHeaders = class extends Headers {
@@ -477,8 +477,8 @@ var FrozenHeaders = class extends Headers {
 	append = frozen("append");
 	delete = frozen("delete");
 };
-const emptyHeaders = /* @__PURE__ */ new FrozenHeaders({ "content-length": "0" });
-const jsonHeaders = /* @__PURE__ */ new FrozenHeaders({ "content-type": "application/json;charset=UTF-8" });
+var emptyHeaders = /* @__PURE__ */ new FrozenHeaders({ "content-length": "0" });
+var jsonHeaders = /* @__PURE__ */ new FrozenHeaders({ "content-type": "application/json;charset=UTF-8" });
 function prepareResponseBody(val, event, config) {
 	if (val === null || val === void 0) return {
 		body: "",
@@ -550,7 +550,59 @@ function callMiddleware(event, middleware, handler, index = 0) {
 function isUnhandledResponse(val) {
 	return val === void 0 || val === kNotFound;
 }
-const NoHandler = () => kNotFound;
+function toRequest(input, options) {
+	if (typeof input === "string") {
+		let url = input;
+		if (url[0] === "/") {
+			const headers = options?.headers ? new Headers(options.headers) : void 0;
+			const host = headers?.get("host") || "localhost";
+			url = `${headers?.get("x-forwarded-proto") === "https" ? "https" : "http"}://${host}${url}`;
+		}
+		return new Request(url, options);
+	} else if (options || input instanceof URL) return new Request(input, options);
+	return input;
+}
+function defineHandler(input) {
+	if (typeof input === "function") return handlerWithFetch(input);
+	const handler = input.handler || (input.fetch ? function _fetchHandler(event) {
+		return input.fetch(event.req);
+	} : NoHandler);
+	return Object.assign(handlerWithFetch(input.middleware?.length ? function _handlerMiddleware(event) {
+		return callMiddleware(event, input.middleware, handler);
+	} : handler), input);
+}
+function handlerWithFetch(handler) {
+	if ("fetch" in handler) return handler;
+	return Object.assign(handler, { fetch: (req) => {
+		if (typeof req === "string") req = new URL(req, "http://_");
+		if (req instanceof URL) req = new Request(req);
+		const event = new H3Event(req);
+		try {
+			return Promise.resolve(toResponse(handler(event), event));
+		} catch (error) {
+			return Promise.resolve(toResponse(error, event));
+		}
+	} });
+}
+function defineLazyEventHandler(loader) {
+	let handler;
+	let promise;
+	return defineHandler(function lazyHandler(event) {
+		return handler ? handler(event) : (promise ??= Promise.resolve(loader()).then(function resolveLazyHandler(r) {
+			handler = toEventHandler(r) || toEventHandler(r.default);
+			if (typeof handler !== "function") throw new TypeError("Invalid lazy handler", { cause: { resolved: r } });
+			return handler;
+		})).then((r) => r(event));
+	});
+}
+function toEventHandler(handler) {
+	if (typeof handler === "function") return handler;
+	if (typeof handler?.handler === "function" && handler.constructor?.["~h3"]) return handler.handler;
+	if (typeof handler?.fetch === "function") return function _fetchHandler(event) {
+		return handler.fetch(event.req);
+	};
+}
+var NoHandler = () => kNotFound;
 var H3Core = class {
 	static "~h3" = true;
 	config;
@@ -599,4 +651,4 @@ var H3Core = class {
 	}
 };
 //#endregion
-export { HTTPError as n, NodeResponse as r, H3Core as t };
+export { NodeResponse as a, toRequest as i, HTTPError as n, FastURL as o, defineLazyEventHandler as r, NullProtoObj as s, H3Core as t };
