@@ -74,7 +74,7 @@ function HomePage() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden pt-40 pb-24 md:pt-52 md:pb-32">
+    <section className="relative overflow-hidden pt-32 pb-20 md:pt-52 md:pb-32">
       <div className="blob left-[-10%] top-[-15%] h-[600px] w-[600px]" />
       <div className="blob right-[-10%] top-[20%] h-[500px] w-[500px]" style={{ animationDelay: "-8s" }} />
       <div className="blob left-[30%] bottom-[-30%] h-[500px] w-[500px]" style={{ animationDelay: "-4s", opacity: 0.35 }} />
@@ -88,7 +88,7 @@ function Hero() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <h1 className="mt-6 max-w-5xl font-display text-5xl font-bold leading-[1.02] tracking-tight text-ink md:text-[80px]">
+          <h1 className="mt-6 max-w-5xl font-display text-4xl font-bold leading-[1.05] tracking-tight text-ink sm:text-5xl md:text-6xl lg:text-[80px] lg:leading-[1.02]">
             Had an accident that <span className="text-primary">wasn't your fault?</span>
           </h1>
         </Reveal>
@@ -380,7 +380,7 @@ function FinalCTA() {
   return (
     <section className="section-y">
       <div className="container-page">
-        <div className="relative overflow-hidden rounded-3xl bg-primary px-8 py-16 text-center md:px-16 md:py-24">
+        <div className="relative overflow-hidden rounded-3xl bg-primary px-6 py-12 text-center sm:px-8 sm:py-16 md:px-16 md:py-24">
           <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-white/15 blur-3xl" />
           <div className="absolute -bottom-24 -right-16 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
           <div className="relative">
