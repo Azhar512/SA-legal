@@ -11,12 +11,8 @@ export default defineConfig({
     tailwindcss(),
     tanstackStart({
       srcDirectory: "src",
-      server: {
-        preset: "vercel",
-        entry: "src/server.ts",
-      }
     }),
-    nitro(),
     react(),
+    nitro(),
   ],
 });
