@@ -139,7 +139,7 @@ function StatStrip() {
   return (
     <section className="border-y border-border bg-tint">
       <div className="container-page py-14">
-        <Stagger className="grid grid-cols-2 gap-8 md:grid-cols-4">
+        <Stagger className="grid grid-cols-2 gap-4 sm:gap-8 md:grid-cols-4">
           {stats.map((s, i) => (
             <StaggerItem key={i}>
               <div className="font-display text-4xl font-bold tracking-tight text-ink md:text-5xl">
@@ -317,7 +317,7 @@ function Testimonials() {
             <h2 className="mt-3 font-display text-4xl font-bold tracking-tight text-ink md:text-5xl">
               Real Queenslanders. Real outcomes.
             </h2>
-            <div className="mt-10 grid grid-cols-2 gap-8">
+            <div className="mt-10 grid grid-cols-2 gap-4 sm:gap-8">
               <div>
                 <div className="font-display text-4xl font-bold text-ink">
                   <Counter to={12} prefix="$" suffix="M+" />

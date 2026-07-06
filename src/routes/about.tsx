@@ -67,7 +67,7 @@ function AboutPage() {
 
       <section className="section-y bg-tint">
         <div className="container-page">
-          <Stagger className="grid gap-10 md:grid-cols-3">
+          <Stagger className="grid gap-8 sm:gap-10 md:grid-cols-3">
             <StaggerItem>
               <div className="font-display text-5xl font-bold text-ink md:text-6xl">
                 <Counter to={35} suffix="+" />
