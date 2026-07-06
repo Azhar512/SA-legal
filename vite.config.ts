@@ -13,6 +13,7 @@ export default defineConfig({
       srcDirectory: "src",
       server: {
         preset: "vercel",
+        entry: "src/server.ts",
       }
     }),
     nitro(),
