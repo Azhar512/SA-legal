@@ -24,6 +24,8 @@ export function SiteNav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const isDarkHero = pathname === "/" && !scrolled;
+
   return (
     <motion.header 
       initial={{ y: -100, opacity: 0 }}
@@ -40,7 +42,7 @@ export function SiteNav() {
         }`}
       >
         <div className="flex h-20 items-center justify-between px-6 md:px-10">
-          <Link to="/" className="flex items-center gap-1 font-display text-2xl font-bold tracking-tight text-primary relative group">
+          <Link to="/" className={`flex items-center gap-1 font-display text-2xl font-bold tracking-tight relative group transition-colors duration-300 ${isDarkHero ? "text-white" : "text-primary"}`}>
             <motion.span
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -61,14 +63,16 @@ export function SiteNav() {
           <nav className="hidden items-center gap-8 md:flex" onMouseLeave={() => setHoveredPath(null)}>
             {navItems.map((n, i) => {
               const isActive = pathname === n.to;
+              const textColor = isDarkHero 
+                ? (isActive || hoveredPath === n.to ? "text-white" : "text-white/70 hover:text-white")
+                : (isActive || hoveredPath === n.to ? "text-primary" : "text-ink-soft hover:text-ink");
+              
               return (
                 <Link
                   key={n.to}
                   to={n.to}
                   onMouseEnter={() => setHoveredPath(n.to)}
-                  className={`relative py-2 text-xs font-semibold uppercase tracking-widest transition-colors ${
-                    isActive || hoveredPath === n.to ? "text-primary" : "text-ink-soft hover:text-ink"
-                  }`}
+                  className={`relative py-2 text-xs font-semibold uppercase tracking-widest transition-colors ${textColor}`}
                   activeOptions={{ exact: true }}
                 >
                   <motion.span
@@ -98,9 +102,12 @@ export function SiteNav() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8, duration: 0.5 }}
-            className="hidden md:block"
+            className="hidden items-center gap-4 md:flex"
           >
-            <Link to="/contact" className="btn-accent text-xs px-6 py-2.5 group">
+            <a href="tel:+61753000777" className={`text-sm font-semibold transition-colors duration-300 ${isDarkHero ? "text-white hover:text-white/80" : "text-ink hover:text-primary"}`}>
+              (07) 5300 0777
+            </a>
+            <Link to="/contact" className={`transition-colors duration-300 ${isDarkHero ? "btn-outline border-white/20 text-white hover:bg-white/10" : "btn-accent"} text-xs px-6 py-2.5 group`}>
               Start Your Free Claim
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>

@@ -74,54 +74,51 @@ function HomePage() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden pt-32 pb-20 md:pt-48 md:pb-32 bg-background">
-      {/* Subtle architectural grid overlay for premium feel */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+    <section className="relative overflow-hidden pt-32 pb-20 md:pt-48 md:pb-32 bg-[#0A0910] text-white">
+      {/* Background glow and subtle diagonal lines */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/2 left-3/4 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-600/30 blur-[140px] rounded-full" />
+        <div className="absolute inset-0 opacity-10 bg-[linear-gradient(45deg,transparent_49%,rgba(255,255,255,0.8)_50%,transparent_51%)] bg-[size:100px_100px]" />
+      </div>
 
-      <div className="container-page relative">
-        <div className="max-w-4xl mx-auto text-center">
-          <Reveal>
-            <div className="inline-flex items-center gap-2 border-b border-accent pb-1 text-xs font-semibold uppercase tracking-widest text-accent mb-8">
-              Queensland Motor Accident Lawyers
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.1}>
-            <h1 className="font-display text-5xl font-bold leading-[1.1] tracking-tight text-ink sm:text-6xl md:text-7xl lg:text-[85px]">
-              Had an accident that <br/><span className="text-primary italic font-medium">wasn't your fault?</span>
-            </h1>
-          </Reveal>
-
-          <Reveal delay={0.2}>
-            <p className="mt-8 mx-auto max-w-2xl text-lg leading-relaxed text-ink-soft md:text-xl font-light">
-              We recover your vehicle damage, hire car costs, lost income and CTP injury
-              compensation — without touching your insurance, and at no upfront cost to you.
-            </p>
-          </Reveal>
-
-          <Reveal delay={0.3}>
-            <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link to="/contact" className="btn-primary w-full sm:w-auto">
-                Check if you qualify <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-              <a href="tel:+61753000777" className="btn-outline w-full sm:w-auto">
-                <Phone className="mr-2 h-4 w-4" /> (07) 5300 0777
-              </a>
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.5}>
-            <div className="mt-16 flex flex-wrap items-center justify-center gap-8 text-sm uppercase tracking-wider text-ink-soft font-medium">
-              <div className="flex items-center gap-2">
-                <div className="flex">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-accent text-accent" />
-                  ))}
-                </div>
-                <span className="text-ink">5.0 Google Reviews</span>
+      <div className="container-page relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+          <div className="max-w-xl text-left">
+            <Reveal>
+              <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium text-white mb-8 shadow-sm">
+                <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
+                Available for new claims
               </div>
-              <div className="hidden sm:block h-4 w-px bg-border" />
-              <div>Regulated by the QLD Law Society</div>
+            </Reveal>
+
+            <Reveal delay={0.1}>
+              <h1 className="font-sans text-5xl font-medium leading-[1.1] tracking-tight text-white sm:text-6xl md:text-[72px]">
+                Transform your claim into compensation with us!
+              </h1>
+            </Reveal>
+
+            <Reveal delay={0.2}>
+              <p className="mt-8 text-lg leading-relaxed text-white/70 font-light">
+                We're your partner in vehicle repairs, hire cars, and injury claims, 
+                recovering what you're owed without touching your insurance.
+              </p>
+            </Reveal>
+
+            <Reveal delay={0.3}>
+              <div className="mt-10 flex flex-wrap items-center gap-4">
+                <Link to="/contact" className="inline-flex items-center justify-center rounded-md bg-white text-black px-8 py-3.5 text-sm font-semibold transition-transform hover:scale-105">
+                  Contact Us
+                </Link>
+                <Link to="/services" className="inline-flex items-center justify-center rounded-md border border-white/20 bg-transparent text-white px-8 py-3.5 text-sm font-semibold transition-colors hover:bg-white/10">
+                  Our services
+                </Link>
+              </div>
+            </Reveal>
+          </div>
+
+          <Reveal delay={0.4} className="relative flex justify-center lg:justify-end">
+            <div className="relative w-full max-w-lg aspect-square">
+               <img src="/hero-3d.png" alt="Abstract 3D Shape" className="w-full h-full object-contain relative z-10 drop-shadow-2xl" />
             </div>
           </Reveal>
         </div>
