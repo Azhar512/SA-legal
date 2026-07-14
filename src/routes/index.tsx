@@ -74,56 +74,57 @@ function HomePage() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden pt-32 pb-20 md:pt-52 md:pb-32">
-      <div className="blob left-[-10%] top-[-15%] h-[600px] w-[600px]" />
-      <div className="blob right-[-10%] top-[20%] h-[500px] w-[500px]" style={{ animationDelay: "-8s" }} />
-      <div className="blob left-[30%] bottom-[-30%] h-[500px] w-[500px]" style={{ animationDelay: "-4s", opacity: 0.35 }} />
+    <section className="relative overflow-hidden pt-32 pb-20 md:pt-48 md:pb-32 bg-background">
+      {/* Subtle architectural grid overlay for premium feel */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
 
       <div className="container-page relative">
-        <Reveal>
-          <div className="inline-flex items-center gap-2 rounded-full border border-border bg-white/70 backdrop-blur px-4 py-1.5 text-xs font-medium text-primary">
-            <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-            Queensland motor accident lawyers
-          </div>
-        </Reveal>
-
-        <Reveal delay={0.1}>
-          <h1 className="mt-6 max-w-5xl font-display text-4xl font-bold leading-[1.05] tracking-tight text-ink sm:text-5xl md:text-6xl lg:text-[80px] lg:leading-[1.02]">
-            Had an accident that <span className="text-primary">wasn't your fault?</span>
-          </h1>
-        </Reveal>
-
-        <Reveal delay={0.2}>
-          <p className="mt-8 max-w-2xl text-lg leading-relaxed text-ink-soft md:text-xl">
-            We recover your vehicle damage, hire car costs, lost income and CTP injury
-            compensation — without touching your insurance, and at no upfront cost to you.
-          </p>
-        </Reveal>
-
-        <Reveal delay={0.3}>
-          <div className="mt-10 flex flex-wrap items-center gap-4">
-            <Link to="/contact" className="btn-primary">
-              Check if you qualify <ArrowRight className="h-4 w-4" />
-            </Link>
-            <a href="tel:+61753000777" className="btn-outline">
-              <Phone className="h-4 w-4" /> Call (07) 5300 0777
-            </a>
-          </div>
-        </Reveal>
-
-        <Reveal delay={0.5}>
-          <div className="mt-14 flex flex-wrap items-center gap-6 text-sm text-ink-soft">
-            <div className="flex items-center gap-1.5">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="h-4 w-4 fill-primary text-primary" />
-              ))}
-              <span className="ml-2 font-medium text-ink">5.0</span>
-              <span>from 200+ Google reviews</span>
+        <div className="max-w-4xl mx-auto text-center">
+          <Reveal>
+            <div className="inline-flex items-center gap-2 border-b border-accent pb-1 text-xs font-semibold uppercase tracking-widest text-accent mb-8">
+              Queensland Motor Accident Lawyers
             </div>
-            <div className="h-4 w-px bg-border" />
-            <div>Regulated by the Queensland Law Society</div>
-          </div>
-        </Reveal>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <h1 className="font-display text-5xl font-bold leading-[1.1] tracking-tight text-ink sm:text-6xl md:text-7xl lg:text-[85px]">
+              Had an accident that <br/><span className="text-primary italic font-medium">wasn't your fault?</span>
+            </h1>
+          </Reveal>
+
+          <Reveal delay={0.2}>
+            <p className="mt-8 mx-auto max-w-2xl text-lg leading-relaxed text-ink-soft md:text-xl font-light">
+              We recover your vehicle damage, hire car costs, lost income and CTP injury
+              compensation — without touching your insurance, and at no upfront cost to you.
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.3}>
+            <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link to="/contact" className="btn-primary w-full sm:w-auto">
+                Check if you qualify <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+              <a href="tel:+61753000777" className="btn-outline w-full sm:w-auto">
+                <Phone className="mr-2 h-4 w-4" /> (07) 5300 0777
+              </a>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.5}>
+            <div className="mt-16 flex flex-wrap items-center justify-center gap-8 text-sm uppercase tracking-wider text-ink-soft font-medium">
+              <div className="flex items-center gap-2">
+                <div className="flex">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="h-4 w-4 fill-accent text-accent" />
+                  ))}
+                </div>
+                <span className="text-ink">5.0 Google Reviews</span>
+              </div>
+              <div className="hidden sm:block h-4 w-px bg-border" />
+              <div>Regulated by the QLD Law Society</div>
+            </div>
+          </Reveal>
+        </div>
       </div>
     </section>
   );
@@ -182,34 +183,34 @@ function TrustBar() {
 
 function ServicesPreview() {
   return (
-    <section className="section-y">
+    <section className="section-y bg-background">
       <div className="container-page">
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <Reveal>
             <div className="max-w-2xl">
-              <div className="text-sm font-semibold uppercase tracking-wider text-primary">Services</div>
-              <h2 className="mt-3 font-display text-4xl font-bold tracking-tight text-ink md:text-5xl">
+              <div className="text-sm font-semibold uppercase tracking-widest text-accent">Practice Areas</div>
+              <h2 className="mt-4 font-display text-4xl font-bold tracking-tight text-ink md:text-5xl">
                 Every claim that comes with a bent bumper.
               </h2>
             </div>
           </Reveal>
           <Reveal delay={0.15}>
             <Link to="/services" className="btn-outline">
-              See all services <ArrowRight className="h-4 w-4" />
+              All Practice Areas
             </Link>
           </Reveal>
         </div>
 
-        <Stagger className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <Stagger className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {services.map((s) => (
             <StaggerItem key={s.title}>
-              <Link to={s.href} className="card-soft block h-full">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
-                  <s.icon className="h-6 w-6" />
+              <Link to={s.href} className="group block h-full border-t border-border pt-8 hover:border-accent transition-colors duration-500">
+                <div className="text-accent mb-6 transition-transform duration-500 group-hover:-translate-y-1">
+                  <s.icon className="h-8 w-8 stroke-[1.5]" />
                 </div>
-                <h3 className="mt-6 font-display text-xl font-semibold text-ink">{s.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink-soft">{s.desc}</p>
-                <div className="mt-6 flex items-center gap-1 text-sm font-semibold text-primary">
+                <h3 className="font-display text-2xl font-semibold text-ink">{s.title}</h3>
+                <p className="mt-4 text-base leading-relaxed text-ink-soft font-light">{s.desc}</p>
+                <div className="mt-8 flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-accent opacity-0 transition-all duration-500 group-hover:opacity-100 group-hover:-translate-y-1">
                   Learn more <ArrowRight className="h-4 w-4" />
                 </div>
               </Link>
@@ -223,29 +224,29 @@ function ServicesPreview() {
 
 function WhyUs() {
   return (
-    <section className="section-y bg-tint">
+    <section className="section-y bg-primary text-white">
       <div className="container-page">
-        <div className="grid gap-14 lg:grid-cols-[1fr_1.4fr] lg:items-start">
+        <div className="grid gap-16 lg:grid-cols-[1fr_1.4fr] lg:items-start">
           <Reveal>
-            <div className="text-sm font-semibold uppercase tracking-wider text-primary">Why SA Legal</div>
-            <h2 className="mt-3 font-display text-4xl font-bold tracking-tight text-ink md:text-5xl">
+            <div className="text-sm font-semibold uppercase tracking-widest text-accent">Our Advantage</div>
+            <h2 className="mt-4 font-display text-4xl font-bold tracking-tight text-white md:text-5xl">
               The legal team that actually makes this easy.
             </h2>
-            <p className="mt-6 max-w-md text-lg leading-relaxed text-ink-soft">
+            <p className="mt-6 max-w-md text-lg leading-relaxed text-white/80 font-light">
               We built SA Legal for the driver who's just been hit and doesn't know where
               to start. No jargon, no invoices arriving mid-claim, no runaround.
             </p>
           </Reveal>
 
-          <Stagger className="grid gap-6 sm:grid-cols-2">
+          <Stagger className="grid gap-12 sm:grid-cols-2 border-t lg:border-t-0 lg:border-l border-white/10 pt-12 lg:pt-0 lg:pl-12">
             {whyUs.map((w) => (
               <StaggerItem key={w.title}>
-                <div className="card-soft h-full">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                    <w.icon className="h-5 w-5" />
+                <div className="h-full">
+                  <div className="text-accent mb-5">
+                    <w.icon className="h-6 w-6 stroke-[1.5]" />
                   </div>
-                  <div className="mt-5 font-display text-lg font-semibold text-ink">{w.title}</div>
-                  <p className="mt-2 text-sm leading-relaxed text-ink-soft">{w.desc}</p>
+                  <div className="font-display text-xl font-semibold text-white">{w.title}</div>
+                  <p className="mt-3 text-sm leading-relaxed text-white/70 font-light">{w.desc}</p>
                 </div>
               </StaggerItem>
             ))}
@@ -258,34 +259,34 @@ function WhyUs() {
 
 function HowItWorks() {
   return (
-    <section className="section-y">
+    <section className="section-y bg-tint border-y border-border">
       <div className="container-page">
         <Reveal>
           <div className="max-w-2xl">
-            <div className="text-sm font-semibold uppercase tracking-wider text-primary">How it works</div>
-            <h2 className="mt-3 font-display text-4xl font-bold tracking-tight text-ink md:text-5xl">
+            <div className="text-sm font-semibold uppercase tracking-widest text-accent mb-4">How it works</div>
+            <h2 className="font-display text-4xl font-bold tracking-tight text-ink md:text-5xl">
               Four steps from crash to closed.
             </h2>
           </div>
         </Reveal>
 
-        <div className="relative mt-16">
+        <div className="relative mt-16 md:mt-24">
           <motion.div
-            className="absolute left-0 top-8 hidden h-px bg-primary/30 md:block"
+            className="absolute left-0 top-12 hidden h-[1px] bg-border md:block"
             initial={{ width: 0 }}
             whileInView={{ width: "100%" }}
             viewport={{ once: true }}
-            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
           />
-          <Stagger className="grid gap-8 md:grid-cols-4">
+          <Stagger className="grid gap-12 md:gap-8 md:grid-cols-4">
             {steps.map((s) => (
               <StaggerItem key={s.n}>
                 <div className="relative">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white shadow-[0_10px_30px_-12px_rgba(59,91,255,0.35)] font-display text-xl font-bold text-primary ring-1 ring-primary/20">
+                  <div className="flex h-24 w-24 items-center justify-center bg-background border border-border rounded-sm font-display text-3xl font-bold text-accent shadow-sm z-10 relative">
                     {s.n}
                   </div>
-                  <div className="mt-6 font-display text-lg font-semibold text-ink">{s.title}</div>
-                  <p className="mt-2 text-sm leading-relaxed text-ink-soft">{s.desc}</p>
+                  <div className="mt-8 font-display text-xl font-semibold text-ink">{s.title}</div>
+                  <p className="mt-3 text-base leading-relaxed text-ink-soft">{s.desc}</p>
                 </div>
               </StaggerItem>
             ))}
@@ -309,36 +310,36 @@ function Testimonials() {
   const t = testimonials[i];
 
   return (
-    <section className="section-y bg-tint">
+    <section className="section-y bg-background">
       <div className="container-page">
-        <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+        <div className="grid gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <Reveal>
-            <div className="text-sm font-semibold uppercase tracking-wider text-primary">Results</div>
-            <h2 className="mt-3 font-display text-4xl font-bold tracking-tight text-ink md:text-5xl">
+            <div className="text-sm font-semibold uppercase tracking-widest text-accent mb-4">Results</div>
+            <h2 className="font-display text-4xl font-bold tracking-tight text-ink md:text-5xl">
               Real Queenslanders. Real outcomes.
             </h2>
-            <div className="mt-10 grid grid-cols-2 gap-4 sm:gap-8">
+            <div className="mt-12 grid grid-cols-2 gap-8 border-t border-border pt-8">
               <div>
-                <div className="font-display text-4xl font-bold text-ink">
+                <div className="font-display text-5xl font-bold text-ink">
                   <Counter to={12} prefix="$" suffix="M+" />
                 </div>
-                <div className="mt-1 text-sm text-ink-soft">Recovered for clients</div>
+                <div className="mt-2 text-sm uppercase tracking-wider text-ink-soft">Recovered for clients</div>
               </div>
               <div>
-                <div className="font-display text-4xl font-bold text-ink">
+                <div className="font-display text-5xl font-bold text-ink">
                   <Counter to={4200} suffix="+" />
                 </div>
-                <div className="mt-1 text-sm text-ink-soft">Claims resolved</div>
+                <div className="mt-2 text-sm uppercase tracking-wider text-ink-soft">Claims resolved</div>
               </div>
             </div>
           </Reveal>
 
           <div
-            className="relative rounded-3xl bg-white p-8 shadow-[0_30px_80px_-30px_rgba(59,91,255,0.3)] md:p-12"
+            className="relative border border-border bg-tint p-10 md:p-14"
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
           >
-            <MessageCircle className="h-8 w-8 text-primary" />
+            <MessageCircle className="h-8 w-8 text-accent mb-8" />
             <AnimatePresence mode="wait">
               <motion.div
                 key={i}
@@ -347,24 +348,24 @@ function Testimonials() {
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.5 }}
               >
-                <p className="mt-6 font-display text-2xl leading-snug text-ink md:text-3xl">
+                <p className="font-display text-2xl leading-relaxed text-ink md:text-3xl italic">
                   "{t.quote}"
                 </p>
-                <div className="mt-8 text-sm">
-                  <div className="font-semibold text-ink">{t.name}</div>
-                  <div className="text-ink-soft">{t.suburb}</div>
+                <div className="mt-10 text-sm">
+                  <div className="font-semibold text-ink uppercase tracking-wider">{t.name}</div>
+                  <div className="text-ink-soft mt-1">{t.suburb}</div>
                 </div>
               </motion.div>
             </AnimatePresence>
 
-            <div className="mt-8 flex gap-2">
+            <div className="mt-12 flex gap-3">
               {testimonials.map((_, idx) => (
                 <button
                   key={idx}
                   onClick={() => setI(idx)}
                   aria-label={`Show testimonial ${idx + 1}`}
-                  className={`h-1.5 rounded-full transition-all ${
-                    idx === i ? "w-8 bg-primary" : "w-4 bg-border"
+                  className={`h-1 transition-all ${
+                    idx === i ? "w-12 bg-accent" : "w-6 bg-border"
                   }`}
                 />
               ))}
@@ -378,31 +379,32 @@ function Testimonials() {
 
 function FinalCTA() {
   return (
-    <section className="section-y">
+    <section className="section-y bg-tint">
       <div className="container-page">
-        <div className="relative overflow-hidden rounded-3xl bg-primary px-6 py-12 text-center sm:px-8 sm:py-16 md:px-16 md:py-24">
-          <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-white/15 blur-3xl" />
-          <div className="absolute -bottom-24 -right-16 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
-          <div className="relative">
-            <h2 className="mx-auto max-w-3xl font-display text-4xl font-bold tracking-tight text-primary-foreground md:text-6xl">
+        <div className="relative overflow-hidden bg-primary px-8 py-16 text-center sm:px-12 sm:py-20 md:px-20 md:py-32">
+          {/* Elegant geometric line overlay instead of a blur */}
+          <div className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:60px_60px]"></div>
+          
+          <div className="relative z-10 max-w-4xl mx-auto border border-white/10 p-12 md:p-20 bg-primary/80 backdrop-blur-sm">
+            <h2 className="font-display text-4xl font-bold tracking-tight text-white md:text-6xl">
               Ready to see what you're owed?
             </h2>
-            <p className="mx-auto mt-6 max-w-xl text-lg text-primary-foreground/85">
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-white/80 font-light">
               Free, no-obligation claim check. We'll tell you in plain English whether it's
               worth pursuing — usually within one business day.
             </p>
-            <div className="mt-10 flex flex-wrap justify-center gap-4">
+            <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6">
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-primary shadow-lg transition hover:scale-[1.03]"
+                className="btn-accent w-full sm:w-auto"
               >
-                Start your free claim <ArrowRight className="h-4 w-4" />
+                Start your free claim <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
               <a
                 href="tel:+61753000777"
-                className="inline-flex items-center gap-2 rounded-full border border-white/40 px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-white/10"
+                className="btn-outline border-white/30 text-white hover:bg-white hover:text-primary w-full sm:w-auto"
               >
-                <Phone className="h-4 w-4" /> (07) 5300 0777
+                <Phone className="mr-2 h-4 w-4" /> (07) 5300 0777
               </a>
             </div>
           </div>
