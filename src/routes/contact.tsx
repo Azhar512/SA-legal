@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { MapPin, Phone, Mail, Clock, CheckCircle2, ArrowRight } from "lucide-react";
-import { PageHero, Reveal, Stagger, StaggerItem } from "../components/motion-primitives";
+import { Reveal, Stagger, StaggerItem } from "../components/motion-primitives";
+import { Hero } from "../components/hero";
 import {
   Accordion,
   AccordionContent,
@@ -32,10 +33,12 @@ const faqs = [
 function ContactPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Talk to a lawyer"
-        title={<>Free claim check. <span className="text-primary">One business day.</span></>}
-        subtitle="Send us the basics and we'll come back with a plain-English view of whether it's worth pursuing — and what you'd likely recover."
+      <Hero
+        pillText="Talk to a lawyer"
+        title={<>Free claim check. <br/><span className="text-primary italic font-medium">One business day.</span></>}
+        description="Send us the basics and we'll come back with a plain-English view of whether it's worth pursuing — and what you'd likely recover."
+        primaryButtonText="View our services"
+        primaryButtonHref="/services"
       />
 
       <section className="pb-24">

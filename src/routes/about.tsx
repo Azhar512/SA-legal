@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Linkedin, ShieldCheck, Wallet, MapPin, MessageCircle, ArrowRight } from "lucide-react";
-import { PageHero, Reveal, Stagger, StaggerItem, Counter } from "../components/motion-primitives";
+import { Reveal, Stagger, StaggerItem, Counter } from "../components/motion-primitives";
+import { Hero } from "../components/hero";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -32,10 +33,12 @@ const team = [
 function AboutPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Our story"
-        title={<>Built for the driver, <span className="text-primary">not the insurer.</span></>}
-        subtitle="SA Legal was started to answer a simple question: why does recovering from a not-at-fault accident feel like a second accident? We rebuilt the process end-to-end."
+      <Hero
+        pillText="Our story"
+        title={<>Built for the driver, <br/><span className="text-primary italic font-medium">not the insurer.</span></>}
+        description="SA Legal was started to answer a simple question: why does recovering from a not-at-fault accident feel like a second accident? We rebuilt the process end-to-end."
+        primaryButtonText="Contact our team"
+        primaryButtonHref="/contact"
       />
 
       <section className="section-y">

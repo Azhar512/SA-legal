@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Car, HeartPulse, Scale, Gavel, Check } from "lucide-react";
-import { PageHero, Reveal, Stagger, StaggerItem } from "../components/motion-primitives";
+import { Reveal, Stagger, StaggerItem } from "../components/motion-primitives";
+import { Hero } from "../components/hero";
 import {
   Accordion,
   AccordionContent,
@@ -38,17 +39,17 @@ const services = [
   },
   {
     icon: Scale,
-    id: "insurance-disputes",
+    id: "insurance",
     title: "Insurance Disputes",
-    desc: "When an insurer denies your claim, delays it for months, or offers a fraction of what you're owed — we step in. Most disputes we take on settle without going to court.",
-    covered: ["Denied or reduced claims", "Delayed decisions & complaints", "Total loss valuation disputes", "AFCA complaint drafting", "Court proceedings if required"],
+    desc: "If your own insurer is delaying, denying, or low-balling your claim, we can step in. We handle internal dispute resolution and AFCA complaints to get your claim paid.",
+    covered: ["Denied liability", "Undervaluation of total loss", "Policy interpretation disputes", "Unreasonable delays", "AFCA representation"],
   },
   {
     icon: Gavel,
     id: "litigation",
-    title: "General Litigation",
-    desc: "Beyond motor claims, we take on civil disputes for Queensland individuals and small businesses — with clear pricing and a plan you can actually understand.",
-    covered: ["Contract & commercial disputes", "Debt recovery", "Consumer law matters", "Property disputes", "Pre-litigation negotiation"],
+    title: "Civil Litigation",
+    desc: "When insurers refuse to be reasonable, we litigate. We have extensive experience running motor accident disputes through the Queensland Courts.",
+    covered: ["Magistrates Court proceedings", "District & Supreme Court", "Mediation and settlement", "Enforcement of judgments", "Cost recovery"],
   },
 ];
 
@@ -63,10 +64,12 @@ const faqs = [
 function ServicesPage() {
   return (
     <>
-      <PageHero
-        eyebrow="What we do"
-        title={<>Every claim that comes with a <span className="text-primary">bent bumper.</span></>}
-        subtitle="Four services, one focus: getting Queenslanders made whole after someone else's mistake."
+      <Hero
+        pillText="Our Practice Areas"
+        title={<>Everything we handle for <br/><span className="text-primary italic font-medium">Queensland drivers.</span></>}
+        description="Motor vehicle claims, CTP injury claims, insurance disputes and civil litigation across Queensland. No win, no cost."
+        primaryButtonText="Start your free claim"
+        primaryButtonHref="/contact"
       />
 
       <section className="pb-8">
