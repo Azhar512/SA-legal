@@ -69,18 +69,26 @@ export function Hero({
             <motion.div 
               className="relative w-full max-w-lg aspect-square"
               animate={{ 
-                y: [-15, 15, -15],
-                rotateZ: [-3, 3, -3],
-                rotateX: [-5, 5, -5],
-                rotateY: [-5, 5, -5]
+                y: [-25, 25, -25],
+                rotateZ: [-6, 6, -6],
+                rotateX: [-10, 10, -10],
+                rotateY: [-10, 10, -10]
               }}
               transition={{ 
-                duration: 8, 
+                duration: 10, 
                 repeat: Infinity,
                 ease: "easeInOut" 
               }}
             >
-               <img src="/hero-3d.png" alt="Abstract 3D Shape" className="w-full h-full object-contain relative z-10 drop-shadow-[0_0_30px_rgba(147,51,234,0.3)]" />
+               <img 
+                 src="/hero-3d.png" 
+                 alt="Abstract 3D Shape" 
+                 className="w-full h-full object-contain relative z-10 drop-shadow-[0_0_30px_rgba(147,51,234,0.3)] mix-blend-screen"
+                 style={{
+                   maskImage: "radial-gradient(ellipse at center, black 40%, transparent 70%)",
+                   WebkitMaskImage: "radial-gradient(ellipse at center, black 40%, transparent 70%)"
+                 }}
+               />
             </motion.div>
           </Reveal>
         </div>
