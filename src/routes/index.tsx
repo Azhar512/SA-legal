@@ -14,6 +14,7 @@ import {
   Star,
 } from "lucide-react";
 import { Reveal, Stagger, StaggerItem, Counter } from "../components/motion-primitives";
+import { Hero } from "../components/hero";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 
@@ -60,7 +61,15 @@ const testimonials = [
 function HomePage() {
   return (
     <>
-      <Hero />
+      <Hero
+        pillText="Available for new claims"
+        title={<>Transform your claim into compensation with us!</>}
+        description="We're your partner in vehicle repairs, hire cars, and injury claims, recovering what you're owed without touching your insurance."
+        primaryButtonText="Contact Us"
+        primaryButtonHref="/contact"
+        secondaryButtonText="Our services"
+        secondaryButtonHref="/services"
+      />
       <StatStrip />
       <TrustBar />
       <ServicesPreview />
@@ -72,60 +81,7 @@ function HomePage() {
   );
 }
 
-function Hero() {
-  return (
-    <section className="relative overflow-hidden pt-32 pb-20 md:pt-48 md:pb-32 bg-[#0A0910] text-white">
-      {/* Background glow and subtle diagonal lines */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/2 left-3/4 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-600/30 blur-[140px] rounded-full" />
-        <div className="absolute inset-0 opacity-10 bg-[linear-gradient(45deg,transparent_49%,rgba(255,255,255,0.8)_50%,transparent_51%)] bg-[size:100px_100px]" />
-      </div>
 
-      <div className="container-page relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
-          <div className="max-w-xl text-left">
-            <Reveal>
-              <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium text-white mb-8 shadow-sm">
-                <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
-                Available for new claims
-              </div>
-            </Reveal>
-
-            <Reveal delay={0.1}>
-              <h1 className="font-sans text-5xl font-medium leading-[1.1] tracking-tight text-white sm:text-6xl md:text-[72px]">
-                Transform your claim into compensation with us!
-              </h1>
-            </Reveal>
-
-            <Reveal delay={0.2}>
-              <p className="mt-8 text-lg leading-relaxed text-white/70 font-light">
-                We're your partner in vehicle repairs, hire cars, and injury claims, 
-                recovering what you're owed without touching your insurance.
-              </p>
-            </Reveal>
-
-            <Reveal delay={0.3}>
-              <div className="mt-10 flex flex-wrap items-center gap-4">
-                <Link to="/contact" className="inline-flex items-center justify-center rounded-md bg-white text-black px-8 py-3.5 text-sm font-semibold transition-transform hover:scale-105">
-                  Contact Us
-                </Link>
-                <Link to="/services" className="inline-flex items-center justify-center rounded-md border border-white/20 bg-transparent text-white px-8 py-3.5 text-sm font-semibold transition-colors hover:bg-white/10">
-                  Our services
-                </Link>
-              </div>
-            </Reveal>
-          </div>
-
-          <Reveal delay={0.4} className="relative flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-lg aspect-square">
-               <img src="/hero-3d.png" alt="Abstract 3D Shape" className="w-full h-full object-contain relative z-10 drop-shadow-2xl" />
-            </div>
-          </Reveal>
-        </div>
-      </div>
-    </section>
-  );
-}
 
 function StatStrip() {
   const stats = [
