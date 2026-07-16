@@ -203,10 +203,11 @@ export function SiteFooter() {
           <div>
             <div className="text-xs font-semibold uppercase tracking-widest text-accent">Contact</div>
             <ul className="mt-6 space-y-3 text-sm text-white/80 font-light">
-              <li>Unit 7/36 Achievement Cres</li>
-              <li>Acacia Ridge QLD 4110, Australia</li>
+              <li>PO Box 34</li>
+              <li>ACACIA RIDGE QLD 4110</li>
               <li><a className="hover:text-accent transition-colors" href="tel:+61753000777">(07) 5300 0777</a></li>
               <li><a className="hover:text-accent transition-colors" href="mailto:info@salegal.com.au">info@salegal.com.au</a></li>
+              <li className="pt-2 text-white/50">ABN: 67668790887</li>
             </ul>
           </div>
         </div>

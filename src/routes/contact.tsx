@@ -84,7 +84,7 @@ function ContactPage() {
 
 function ContactInfo() {
   const items = [
-    { icon: MapPin, label: "Office", value: "Unit 7/36 Achievement Cres\nAcacia Ridge QLD 4110, Australia" },
+    { icon: MapPin, label: "Mailing Address", value: "PO Box 34\nACACIA RIDGE QLD 4110" },
     { icon: Phone, label: "Phone", value: "(07) 5300 0777", href: "tel:+61753000777" },
     { icon: Mail, label: "Email", value: "info@salegal.com.au", href: "mailto:info@salegal.com.au" },
     { icon: Clock, label: "Hours", value: "Mon–Fri  ·  8:30am – 6:00pm AEST" },
